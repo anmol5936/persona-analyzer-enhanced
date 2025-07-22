@@ -34,7 +34,7 @@ def ensure_nltk_data():
     datasets = [
         'punkt',
         'stopwords', 
-        'averaged_perceptron_tagger',  # Fixed: removed '_eng' suffix
+        'averaged_perceptron_tagger',
         'maxent_ne_chunker', 
         'words', 
         'wordnet', 
@@ -43,27 +43,19 @@ def ensure_nltk_data():
     
     for dataset in datasets:
         try:
-            # Try to find the dataset
-            if dataset == 'punkt':
-                nltk.data.find('tokenizers/punkt')
-            elif dataset == 'stopwords':
-                nltk.data.find('corpora/stopwords')
-            elif dataset == 'averaged_perceptron_tagger':
-                nltk.data.find('taggers/averaged_perceptron_tagger')
-            elif dataset == 'maxent_ne_chunker':
-                nltk.data.find('chunkers/maxent_ne_chunker')
-            elif dataset == 'words':
-                nltk.data.find('corpora/words')
-            elif dataset == 'wordnet':
-                nltk.data.find('corpora/wordnet')
-            elif dataset == 'omw-1.4':
-                nltk.data.find('corpora/omw-1.4')
+            nltk.data.find(f'tokenizers/{dataset}' if dataset == 'punkt' else f'corpora/{dataset}')
         except LookupError:
             try:
                 print(f"Downloading {dataset}...")
-                nltk.download(dataset, quiet=False)
+                nltk.download(dataset, quiet=True)
             except Exception as e:
                 print(f"Failed to download {dataset}: {e}")
+                # Try to download the 'punkt_tab' as a fallback
+                if dataset == 'punkt':
+                    try:
+                        nltk.download('punkt_tab', quiet=True)
+                    except Exception as e2:
+                        print(f"Failed to download punkt_tab as well: {e2}")
                 continue
 
 # Initialize NLTK data

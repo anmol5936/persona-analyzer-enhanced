@@ -2,3 +2,5 @@ nltk
 spacy
 scikit-learn
 pandas
+sentence-transformers
+PyPDF2

@@ -20,24 +20,29 @@ def test_analyzer():
         "experience": "5 years of research experience in computational biology"
     }
     
-    # Test case 2: Travel Planner (from your original code)
+    # Test case 2: Travel Planner
     test_persona_2 = {
-        "role": "Senior Travel Planner", 
-        "description": "Experienced travel coordinator with 7 years of expertise in group travel planning, budget management, and destination research for corporate and leisure clients. Specializes in international destinations and complex itinerary coordination.",
-        "skills": ["budget planning", "destination research", "group coordination", "vendor negotiation"]
+        "role": "Travel Planner",
+        "task": "Plan a trip of 4 days for a group of 10 college friends."
     }
-    
-    # Test case 3: HR Manager (from your original code)
+
+    # Test case 3: HR Professional
     test_persona_3 = {
-        "role": "Human Resources Manager",
-        "description": "Expert HR professional with over 10 years of experience in talent acquisition, employee relations, and compliance management. Leads recruitment initiatives and develops training programs.",
-        "expertise": "Leadership, Policy Development, Strategic Planning"
+        "role": "HR Professional",
+        "task": "Create and manage fillable forms for onboarding and compliance."
+    }
+
+    # Test case 4: Food Contractor
+    test_persona_4 = {
+        "role": "Food Contractor",
+        "task": "Prepare a vegetarian buffet-style dinner menu for a corporate gathering."
     }
     
     test_cases = [
         ("PhD Researcher", test_persona_1),
-        ("Travel Planner", test_persona_2),  
-        ("HR Manager", test_persona_3)
+        ("Travel Planner", test_persona_2),
+        ("HR Professional", test_persona_3),
+        ("Food Contractor", test_persona_4)
     ]
     
     for test_name, test_persona in test_cases:
